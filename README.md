@@ -15,9 +15,9 @@ App was created part of school work and to lean to integrate frontend and backen
 ## Tech/framework used
 
 <b>Built with</b>
--[react](https://reactjs.org/)
--[Node.js](https://nodejs.org/en/)
--[mysql](https://www.mysql.com/)
+- [react](https://reactjs.org/)
+- [Node.js](https://nodejs.org/en/)
+- [mysql](https://www.mysql.com/)
 
 ## Features
 
