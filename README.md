@@ -25,4 +25,4 @@
 
 ## License
 
-MIT © [Tuukka Tuominen]
+MIT © [Tuukka Tuominen](https://github.com/tuominentuukka)
