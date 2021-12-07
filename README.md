@@ -25,6 +25,6 @@ App was created by using React, Node.js and mysql
 ## How to use?
 
 
-## License
+## Author
 
-MIT © [Tuukka Tuominen](https://github.com/tuominentuukka)
+© [Tuukka Tuominen](https://github.com/tuominentuukka)
