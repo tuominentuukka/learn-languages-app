@@ -27,15 +27,6 @@ p {
   padding-top: 10px;
 }
 
-.moving {
-  margin: auto;
-  max-width: 1200px;
-}
-
-.movingList {
-  padding-bottom: 20px;
-}
-
 nav {
   border-bottom: 1px solid black;
   background-color: white;
