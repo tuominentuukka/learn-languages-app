@@ -46,6 +46,13 @@ let connectionFunctions = {
       );
     });
   },
+  save: (words, callback) => {
+    pool.getConnection((err, connection) => {
+      connection.query("INSERT INTO words SET ?", words, (result) => {
+        callback("1 word pair inserted");
+      });
+    });
+  },
 };
 
 module.exports = connectionFunctions;
