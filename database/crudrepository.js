@@ -30,6 +30,22 @@ let connectionFunctions = {
       });
     });
   },
+  deleteById: (id, callback) => {
+    pool.getConnection((err, connection) => {
+      connection.query(
+        "DELETE FROM words WHERE id = ?",
+        id,
+
+        (err, result) => {
+          if (err) {
+            callback(err, null);
+          }
+
+          callback(null, "deleted word with id " + id);
+        }
+      );
+    });
+  },
 };
 
 module.exports = connectionFunctions;
