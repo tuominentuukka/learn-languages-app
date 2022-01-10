@@ -5,15 +5,14 @@ import axios from "axios";
 class AdminPage extends React.Component {
   state = { words: [] };
   async componentDidMount() {
-    axios.get(`http://localhost:8080/words`).then((res) => {
+    axios.get(`/words`).then((res) => {
       const words = res.data;
       this.setState({ words });
     });
   }
 
   removeWord = (e, word) => {
-    const url = `http://localhost:8080/words/${word.id}`;
-
+    const url = `/words/${word.id}`;
     axios
       .delete(url)
       .then((res) => {
@@ -30,16 +29,21 @@ class AdminPage extends React.Component {
 
   render() {
     return (
-      <ul>
-        {this.state.words.map((word) => (
-          <li key={word.id}>
-            {word.english_word} - {word.finnish_word}{" "}
-            <button type="submit" onClick={(e) => this.removeWord(e, word)}>
-              poista sana
-            </button>
-          </li>
-        ))}
-      </ul>
+      <div className="content">
+        <div className="list">
+          <ul>
+            {this.state.words.map((word) => (
+              <li key={word.id}>
+                {word.english_word} - {word.finnish_word}{" "}
+                <button type="submit" onClick={(e) => this.removeWord(e, word)}>
+                  poista sana
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="form"></div>
+      </div>
     );
   }
 }
