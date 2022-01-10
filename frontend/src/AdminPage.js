@@ -3,7 +3,15 @@ import "./App.css";
 import axios from "axios";
 
 class AdminPage extends React.Component {
-  state = { words: [] };
+  constructor() {
+    super();
+    this.state = {
+      english_word: "",
+      finnish_word: "",
+      words: [],
+    };
+  }
+  //state = { words: [] };
   async componentDidMount() {
     axios.get(`/words`).then((res) => {
       const words = res.data;
@@ -27,7 +35,22 @@ class AdminPage extends React.Component {
       });
   };
 
+  onSubmit = (event) => {
+    event.preventDefault();
+    const { english_word, finnish_word } = this.state;
+
+    axios.post("/words", { english_word, finnish_word }).then((res) => {
+      console.log(res);
+      console.log(res.data);
+    });
+  };
+
+  onChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   render() {
+    const { english_word, finnish_word } = this.state;
     return (
       <div className="content">
         <div className="list">
@@ -42,7 +65,31 @@ class AdminPage extends React.Component {
             ))}
           </ul>
         </div>
-        <div className="form"></div>
+        <div className="form">
+          <form onSubmit={this.onSubmit}>
+            <label>
+              {" "}
+              englanniksi:
+              <input
+                type="text"
+                name="english_word"
+                value={english_word}
+                onChange={this.onChange}
+              />
+            </label>
+            <label>
+              {" "}
+              suomeksi:
+              <input
+                type="text"
+                name="finnish_word"
+                value={finnish_word}
+                onChange={this.onChange}
+              />
+            </label>
+            <button type="submit"> lisää </button>
+          </form>
+        </div>
       </div>
     );
   }
