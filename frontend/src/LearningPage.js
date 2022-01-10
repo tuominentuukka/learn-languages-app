@@ -14,7 +14,7 @@ class LearningPage extends React.Component {
     } else {
       let ui = this.state.words.map((word) => (
         <li key={word.id}>
-          {word.id} - {word.english_word} - {word.finnish_word}
+          {word.english_word} - {word.finnish_word}
         </li>
       ));
       return <ul>{ui}</ul>;
