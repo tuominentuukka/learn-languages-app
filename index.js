@@ -27,3 +27,14 @@ app.get("/words", (req, res) => {
     }
   });
 });
+
+app.delete("/words/:id", (req, res) => {
+  const id = req.params.id;
+  connection.deleteById(id, (err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
