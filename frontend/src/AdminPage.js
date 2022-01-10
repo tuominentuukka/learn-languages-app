@@ -42,6 +42,11 @@ class AdminPage extends React.Component {
     axios.post("/words", { english_word, finnish_word }).then((res) => {
       console.log(res);
       console.log(res.data);
+      axios.get(`/words`).then((res) => {
+        const words = res.data;
+        this.setState({ words });
+      });
+      this.setState({ english_word: "", finnish_word: "" });
     });
   };
 
