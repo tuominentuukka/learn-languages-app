@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 
-class App extends React.Component {
+class LearningPage extends React.Component {
   state = { words: [] };
   async componentDidMount() {
     let hr = await fetch("http://localhost:8080/words");
@@ -22,4 +22,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default LearningPage;
