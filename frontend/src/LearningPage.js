@@ -1,24 +1,27 @@
 import React from "react";
 import "./App.css";
+import axios from "axios";
 
 class LearningPage extends React.Component {
   state = { words: [] };
   async componentDidMount() {
-    let hr = await fetch("http://localhost:8080/words");
-    let json = await hr.json();
-    this.setState({ words: json });
+    axios.get(`/words`).then((res) => {
+      const words = res.data;
+      this.setState({ words });
+    });
   }
   render() {
-    if (this.state.words.length === 0) {
-      return <p>loading...</p>;
-    } else {
-      let ui = this.state.words.map((word) => (
-        <li key={word.id}>
-          {word.english_word} - {word.finnish_word}
-        </li>
-      ));
-      return <ul>{ui}</ul>;
-    }
+    return (
+      <div className="content">
+        <ul>
+          {this.state.words.map((word) => (
+            <li key={word.id}>
+              {word.english_word} - {word.finnish_word}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
   }
 }
 
