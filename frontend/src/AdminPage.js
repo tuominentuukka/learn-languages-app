@@ -2,6 +2,8 @@ import React from "react";
 import "./App.css";
 import axios from "axios";
 
+const url = `http://localhost:8080/words`;
+
 class AdminPage extends React.Component {
   constructor() {
     super();
@@ -13,16 +15,15 @@ class AdminPage extends React.Component {
   }
   //state = { words: [] };
   async componentDidMount() {
-    axios.get(`/words`).then((res) => {
+    axios.get(url).then((res) => {
       const words = res.data;
       this.setState({ words });
     });
   }
 
   removeWord = (e, word) => {
-    const url = `/words/${word.id}`;
     axios
-      .delete(url)
+      .delete(url + `/${word.id}`)
       .then((res) => {
         this.setState((previousState) => {
           return {
@@ -39,10 +40,10 @@ class AdminPage extends React.Component {
     event.preventDefault();
     const { english_word, finnish_word } = this.state;
 
-    axios.post("/words", { english_word, finnish_word }).then((res) => {
+    axios.post(url, { english_word, finnish_word }).then((res) => {
       console.log(res);
       console.log(res.data);
-      axios.get(`/words`).then((res) => {
+      axios.get(url).then((res) => {
         const words = res.data;
         this.setState({ words });
       });
