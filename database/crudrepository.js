@@ -53,14 +53,15 @@ let connectionFunctions = {
       });
     });
   },
-  update: (words, id, callback) => {
+  update: (english_word, finnish_word, id, callback) => {
     pool.getConnection((err, connection) => {
       connection.query(
-        `UPDATE words SET ? WHERE id = ?`,
-        words,
+        `UPDATE words SET english_word=?, finnish_word=? WHERE id=?`,
+        english_word,
+        finnish_word,
         id,
         (result) => {
-          callback("words");
+          callback("updated word to", english_word, finnish_word);
         }
       );
     });
