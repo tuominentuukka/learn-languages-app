@@ -52,13 +52,15 @@ app.post("/words", (req, res) => {
 });
 
 app.put("/words", (req, res) => {
-  let words = req.body;
-  let id = req.params.id;
-  connection.update([words, id], (err, result) => {
+  let english_word = req.body.english_word;
+  let finnish_word = req.body.finnish_word;
+  let id = req.body.id;
+  connection.update([english_word, finnish_word, id], (err, result) => {
     if (err) {
       res.send(err);
     } else {
       res.send(result);
+      console.log(english_word, finnish_word, id);
     }
   });
 });
