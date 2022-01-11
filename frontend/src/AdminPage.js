@@ -36,6 +36,30 @@ class AdminPage extends React.Component {
       });
   };
 
+  updateWord = (e, word) => {
+    e.preventDefault();
+    const { english_word, finnish_word } = this.state;
+    let data = {
+      english_word: english_word,
+      finnish_word: finnish_word,
+      id: word.id,
+    };
+    console.log(word.id);
+    axios
+      .put(url, data)
+      .then((res) => {
+        console.log(res.data);
+        axios.get(url).then((res) => {
+          const words = res.data;
+          this.setState({ words });
+        });
+        this.setState({ english_word: "", finnish_word: "" });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   onSubmit = (event) => {
     event.preventDefault();
     const { english_word, finnish_word } = this.state;
@@ -58,43 +82,58 @@ class AdminPage extends React.Component {
   render() {
     const { english_word, finnish_word } = this.state;
     return (
-      <div className="content">
-        <div className="list">
-          <ul>
-            {this.state.words.map((word) => (
-              <li key={word.id}>
-                {word.english_word} - {word.finnish_word}{" "}
-                <button type="submit" onClick={(e) => this.removeWord(e, word)}>
-                  poista sana
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="form">
-          <form onSubmit={this.onSubmit}>
-            <label>
-              {" "}
-              englanniksi:
-              <input
-                type="text"
-                name="english_word"
-                value={english_word}
-                onChange={this.onChange}
-              />
-            </label>
-            <label>
-              {" "}
-              suomeksi:
-              <input
-                type="text"
-                name="finnish_word"
-                value={finnish_word}
-                onChange={this.onChange}
-              />
-            </label>
-            <button type="submit"> lisää </button>
-          </form>
+      <div className="body">
+        <div className="content">
+          <div className="list">
+            <h1>Lisää sana tai muokkaa haluamaasi</h1>
+            <ul>
+              {this.state.words.map((word) => (
+                <li key={word.id}>
+                  {word.english_word} - {word.finnish_word}{" "}
+                  <button
+                    type="submit"
+                    onClick={(e) => this.removeWord(e, word)}
+                  >
+                    poista sana
+                  </button>
+                  <button
+                    type="submit"
+                    onClick={(e) => this.updateWord(e, word)}
+                  >
+                    päivitä sanaa
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="form">
+            <form onSubmit={this.onSubmit}>
+              <label>
+                <h1>Lisää sana tai muokkaa haluamaasi</h1>
+              </label>
+              <label>
+                {" "}
+                englanniksi:
+                <input
+                  type="text"
+                  name="english_word"
+                  value={english_word}
+                  onChange={this.onChange}
+                />
+              </label>
+              <label>
+                {" "}
+                suomeksi:
+                <input
+                  type="text"
+                  name="finnish_word"
+                  value={finnish_word}
+                  onChange={this.onChange}
+                />
+              </label>
+              <button type="submit"> lisää </button>
+            </form>
+          </div>
         </div>
       </div>
     );
