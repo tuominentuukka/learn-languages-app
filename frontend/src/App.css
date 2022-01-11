@@ -36,3 +36,23 @@ nav {
 li {
   list-style: none;
 }
+
+.body {
+  max-width: 920px;
+  margin: auto;
+}
+.content {
+  justify-content: center;
+}
+
+.list {
+  text-align: center;
+  float: left;
+  padding: 40px;
+}
+
+.form {
+  text-align: center;
+  display: flex;
+  padding-top: 40px;
+}
