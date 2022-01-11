@@ -28,7 +28,6 @@ class App extends React.Component {
           <Routes>
             <Route path="/" element={<LearningPage />} />
             <Route path="/teacher" element={<AdminPage />} />
-
             <Route path="*" element={<h1>Väärä osoite</h1>} />
           </Routes>
         </div>
