@@ -49,8 +49,20 @@ let connectionFunctions = {
   save: (words, callback) => {
     pool.getConnection((err, connection) => {
       connection.query(`INSERT INTO words SET ?`, words, (result) => {
-        callback("words");
+        callback("new word pair inserted");
       });
+    });
+  },
+  update: (words, id, callback) => {
+    pool.getConnection((err, connection) => {
+      connection.query(
+        `UPDATE words SET ? WHERE id = ?`,
+        words,
+        id,
+        (result) => {
+          callback("words");
+        }
+      );
     });
   },
 };
