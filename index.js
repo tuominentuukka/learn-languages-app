@@ -50,3 +50,15 @@ app.post("/words", (req, res) => {
     }
   });
 });
+
+app.put("/words", (req, res) => {
+  let words = req.body;
+  let id = req.params.id;
+  connection.update([words, id], (err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
