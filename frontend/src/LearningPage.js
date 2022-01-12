@@ -41,6 +41,7 @@ class LearningPage extends React.Component {
   render() {
     return (
       <div className="content">
+        <h1>Opettele sanoja</h1>
         <ul>
           {this.state.words.map((word) => (
             <li key={word.id}>
