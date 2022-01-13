@@ -9,6 +9,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 const url = `http://localhost:8080/words`;
 
@@ -74,8 +77,10 @@ class LearningPage extends React.Component {
 
   render() {
     return (
-      <div className="content">
-        <h1>Harjoittele sanoja</h1>
+      <Box className="content">
+        <Typography component="div">
+          <Box sx={{ fontSize: "h3.fontSize", m: 1 }}>Harjoittele sanoja</Box>
+        </Typography>
         <TableContainer
           component={Paper}
           style={{ maxWidth: "800px", textAlign: "center", margin: "auto" }}
@@ -96,8 +101,9 @@ class LearningPage extends React.Component {
                     {word.english_word}
                   </StyledTableCell>
                   <StyledTableCell align="right" style={style}>
-                    <input
+                    <TextField
                       type="text"
+                      size="small"
                       onChange={(event) => {
                         this.setState({ answer: event.target.value });
                       }}
@@ -106,17 +112,20 @@ class LearningPage extends React.Component {
                           this.addAnswer(word);
                         }
                       }}
-                    ></input>
+                    ></TextField>
                   </StyledTableCell>
                 </StyledTableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
-        <h3>
-          score = {this.state.score[0]}/{this.state.words.length}
-        </h3>
-      </div>
+        <Typography component="div">
+          <Box sx={{ fontSize: "h5.fontSize", m: 1 }}>
+            {" "}
+            score = {this.state.score[0]}/{this.state.words.length}
+          </Box>
+        </Typography>
+      </Box>
     );
   }
 }
