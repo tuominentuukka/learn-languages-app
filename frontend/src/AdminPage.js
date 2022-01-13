@@ -210,17 +210,15 @@ class AdminPage extends React.Component {
                       </StyledTableCell>
                     </StyledTableRow>
                   </TableBody>
-                  <Button
-                    variant="contained"
-                    type="submit"
-                    style={
-                      (style, { margin: "10px", backgroundColor: "green" })
-                    }
-                  >
-                    {" "}
-                    lisää{" "}
-                  </Button>
                 </Table>
+                <Button
+                  variant="contained"
+                  type="submit"
+                  style={(style, { margin: "10px", backgroundColor: "green" })}
+                >
+                  {" "}
+                  lisää{" "}
+                </Button>
               </form>
             </TableContainer>
           </Box>
