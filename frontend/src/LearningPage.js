@@ -75,6 +75,7 @@ class LearningPage extends React.Component {
   render() {
     return (
       <div className="content">
+        <h1>Harjoittele sanoja</h1>
         <TableContainer
           component={Paper}
           style={{ maxWidth: "800px", textAlign: "center", margin: "auto" }}
