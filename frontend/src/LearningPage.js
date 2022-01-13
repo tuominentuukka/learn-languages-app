@@ -31,11 +31,11 @@ class LearningPage extends React.Component {
         word.finnish_word === answer
     );
 
-    if (rightAnswer.finnish_word === answer) {
+    if (rightAnswer !== undefined && rightAnswer.finnish_word === answer) {
       score[0] = score[0] + 1;
       this.setState({ score });
     }
-    console.log(score);
+    console.log(rightAnswer, score);
   }
 
   render() {
