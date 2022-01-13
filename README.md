@@ -2,6 +2,9 @@
 
 Learn languages is web app to help you learn different languages
 
+## Heroku
+- [learn-languages](https://learn-languages-app.herokuapp.com/)
+
 ## Motivation
 
 App was created part of school work and to lean to integrate frontend and backend
