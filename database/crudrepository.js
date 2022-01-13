@@ -26,6 +26,7 @@ const pool = mysql.createPool({
 let connectionFunctions = {
   /**
    * Function to connect to database.
+   *  @function connect
    */
   connect: () => {
     pool.on("connection", function (connection) {
@@ -33,7 +34,8 @@ let connectionFunctions = {
     });
   },
   /**
-   * Function close database connection.
+   * Function to close database connection.
+   * @function close
    */
   close: () => {
     pool.on("release", function (connection) {
@@ -43,6 +45,7 @@ let connectionFunctions = {
   /**
    * Function to find all words on database.
    * @param {*} callback
+   * @function findAll
    */
   findAll: (callback) => {
     pool.getConnection((err, connection) => {
@@ -57,8 +60,9 @@ let connectionFunctions = {
   },
   /**
    * Function to delete word from database.
-   * @param {number} id
-   * @param {*} callback
+   * @param {number} id - Words id on database
+   * @param  callback
+   * @function deleteById
    */
   deleteById: (id, callback) => {
     pool.getConnection((err, connection) => {
@@ -78,8 +82,9 @@ let connectionFunctions = {
   },
   /**
    * Function to add new words to database.
-   * @param {String} words
-   * @param {*} callback
+   * @param {String} words - Words given on frontend.
+   * @param  callback
+   * @function save
    */
   save: (words, callback) => {
     pool.getConnection((err, connection) => {
@@ -90,10 +95,11 @@ let connectionFunctions = {
   },
   /**
    * Function to update words on database.
-   * @param {String} english_word
-   * @param {String} finnish_word
-   * @param {number} id
-   * @param {*} callback
+   * @param {String} english_word - Word given on frontend.
+   * @param {String} finnish_word - Word given on frontend.
+   * @param {number} id - Words id on database.
+   * @param  callback
+   * @function update
    */
   update: (english_word, finnish_word, id, callback) => {
     pool.getConnection((err, connection) => {
