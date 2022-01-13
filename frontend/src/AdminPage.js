@@ -9,6 +9,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 
 const url = `http://localhost:8080/words`;
 
@@ -116,9 +119,9 @@ class AdminPage extends React.Component {
   render() {
     const { english_word, finnish_word } = this.state;
     return (
-      <div className="body">
-        <div className="content">
-          <div className="list">
+      <Box className="body">
+        <Box className="content">
+          <Box className="list">
             <TableContainer
               component={Paper}
               style={{ maxWidth: "800px", textAlign: "center", margin: "auto" }}
@@ -144,28 +147,31 @@ class AdminPage extends React.Component {
                         {word.finnish_word}
                       </StyledTableCell>
                       <StyledTableCell align="right" style={style}>
-                        <button
+                        <Button
+                          variant="contained"
                           type="submit"
+                          style={{ backgroundColor: "red" }}
                           onClick={(e) => this.removeWord(e, word)}
                         >
                           poista
-                        </button>
+                        </Button>
                       </StyledTableCell>
                       <StyledTableCell align="right" style={style}>
-                        <button
+                        <Button
+                          variant="contained"
                           type="submit"
                           onClick={(e) => this.updateWord(e, word)}
                         >
                           päivitä
-                        </button>
+                        </Button>
                       </StyledTableCell>
                     </StyledTableRow>
                   ))}
                 </TableBody>
               </Table>
             </TableContainer>
-          </div>
-          <div className="form">
+          </Box>
+          <Box className="form">
             <TableContainer
               component={Paper}
               style={{ maxWidth: "540px", textAlign: "center", margin: "auto" }}
@@ -185,33 +191,41 @@ class AdminPage extends React.Component {
                   <TableBody>
                     <StyledTableRow>
                       <StyledTableCell component="th" scope="row" style={style}>
-                        <input
+                        <TextField
                           type="text"
                           name="english_word"
                           value={english_word}
                           onChange={this.onChange}
+                          size="small"
                         />
                       </StyledTableCell>
                       <StyledTableCell align="right" style={style}>
-                        <input
+                        <TextField
                           type="text"
                           name="finnish_word"
                           value={finnish_word}
+                          size="small"
                           onChange={this.onChange}
                         />
                       </StyledTableCell>
                     </StyledTableRow>
                   </TableBody>
-                  <button type="submit" style={(style, { margin: "10px" })}>
+                  <Button
+                    variant="contained"
+                    type="submit"
+                    style={
+                      (style, { margin: "10px", backgroundColor: "green" })
+                    }
+                  >
                     {" "}
                     lisää{" "}
-                  </button>
+                  </Button>
                 </Table>
               </form>
             </TableContainer>
-          </div>
-        </div>
-      </div>
+          </Box>
+        </Box>
+      </Box>
     );
   }
 }
