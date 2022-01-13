@@ -68,7 +68,6 @@ app.put("/words", (req, res) => {
       res.send(err);
     } else {
       res.send(result);
-      console.log(english_word, finnish_word, id);
     }
   });
 });
