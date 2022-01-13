@@ -66,6 +66,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 class LearningPage extends React.Component {
   /**
    * Constructor to set states.
+   * @constructor
    */
   constructor() {
     super();
