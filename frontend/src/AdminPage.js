@@ -23,6 +23,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
   },
+  [`&`]: { maxWidth: "70px", textAlign: "center", margin: "auto" },
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
@@ -35,12 +36,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const style = {
-  maxWidth: "70px",
-  textAlign: "center",
-  margin: "auto",
-};
-
 class AdminPage extends React.Component {
   constructor() {
     super();
@@ -50,7 +45,7 @@ class AdminPage extends React.Component {
       words: [],
     };
   }
-  //state = { words: [] };
+
   componentDidMount() {
     axios.get(url).then((res) => {
       const words = res.data;
@@ -123,24 +118,22 @@ class AdminPage extends React.Component {
               <Table sx={{ minWidth: 700 }} aria-label="customized table">
                 <TableHead>
                   <TableRow>
-                    <StyledTableCell style={style}>Englanniksi</StyledTableCell>
-                    <StyledTableCell align="right" style={style}>
-                      Suomeksi
-                    </StyledTableCell>
-                    <StyledTableCell style={style}></StyledTableCell>
-                    <StyledTableCell style={style}></StyledTableCell>
+                    <StyledTableCell>Englanniksi</StyledTableCell>
+                    <StyledTableCell align="right">Suomeksi</StyledTableCell>
+                    <StyledTableCell></StyledTableCell>
+                    <StyledTableCell></StyledTableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {this.state.words.map((word) => (
                     <StyledTableRow key={word.id}>
-                      <StyledTableCell component="th" scope="row" style={style}>
+                      <StyledTableCell component="th" scope="row">
                         {word.english_word}
                       </StyledTableCell>
-                      <StyledTableCell align="right" style={style}>
+                      <StyledTableCell align="right">
                         {word.finnish_word}
                       </StyledTableCell>
-                      <StyledTableCell align="right" style={style}>
+                      <StyledTableCell align="right">
                         <Button
                           variant="contained"
                           type="submit"
@@ -150,7 +143,7 @@ class AdminPage extends React.Component {
                           poista
                         </Button>
                       </StyledTableCell>
-                      <StyledTableCell align="right" style={style}>
+                      <StyledTableCell align="right">
                         <Button
                           variant="contained"
                           type="submit"
@@ -174,17 +167,13 @@ class AdminPage extends React.Component {
                 <Table aria-label="customized table">
                   <TableHead>
                     <TableRow>
-                      <StyledTableCell style={style}>
-                        Englanniksi
-                      </StyledTableCell>
-                      <StyledTableCell align="right" style={style}>
-                        Suomeksi
-                      </StyledTableCell>
+                      <StyledTableCell>Englanniksi</StyledTableCell>
+                      <StyledTableCell align="right">Suomeksi</StyledTableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     <StyledTableRow>
-                      <StyledTableCell component="th" scope="row" style={style}>
+                      <StyledTableCell component="th" scope="row">
                         <TextField
                           type="text"
                           name="english_word"
@@ -193,7 +182,7 @@ class AdminPage extends React.Component {
                           size="small"
                         />
                       </StyledTableCell>
-                      <StyledTableCell align="right" style={style}>
+                      <StyledTableCell align="right">
                         <TextField
                           type="text"
                           name="finnish_word"
@@ -208,7 +197,7 @@ class AdminPage extends React.Component {
                 <Button
                   variant="contained"
                   type="submit"
-                  style={(style, { margin: "10px", backgroundColor: "green" })}
+                  style={{ margin: "10px", backgroundColor: "green" }}
                 >
                   {" "}
                   lisää{" "}
