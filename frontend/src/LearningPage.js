@@ -121,7 +121,7 @@ class LearningPage extends React.Component {
         <Typography component="div">
           <Box sx={{ fontSize: "h5.fontSize", m: 1 }}>
             {" "}
-            score = {this.state.score[0]}/{this.state.words.length}
+            Pisteesi = {this.state.score[0]}/{this.state.words.length}
           </Box>
         </Typography>
       </Box>
