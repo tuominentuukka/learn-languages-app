@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/tuominentuukka/learn-languages-app#readme",
   "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@mui/material": "^5.2.8",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
