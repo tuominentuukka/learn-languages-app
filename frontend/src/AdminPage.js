@@ -12,8 +12,8 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-
-const url = `http://localhost:8080/words`;
+const port = process.env.PORT || 8080;
+const url = `http://localhost:${port}/words`;
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -51,7 +51,7 @@ class AdminPage extends React.Component {
     };
   }
   //state = { words: [] };
-  async componentDidMount() {
+  componentDidMount() {
     axios.get(url).then((res) => {
       const words = res.data;
       this.setState({ words });

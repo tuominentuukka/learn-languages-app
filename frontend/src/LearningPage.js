@@ -13,7 +13,8 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-const url = `http://localhost:8080/words`;
+const port = process.env.PORT || 8080;
+const url = `http://localhost:${port}/words`;
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
