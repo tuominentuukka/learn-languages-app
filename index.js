@@ -1,10 +1,18 @@
+/**
+ * @author Tuukka Tuominen
+ * @version 1.0.0
+ */
+
 require("dotenv").config();
 
 const connection = require("./database/crudrepository.js");
 
 const express = require("express");
+
 const cors = require("cors");
+
 const app = express();
+
 const port = process.env.PORT || 8080;
 app.use(express.json());
 
