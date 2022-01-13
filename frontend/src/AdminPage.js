@@ -166,32 +166,49 @@ class AdminPage extends React.Component {
             </TableContainer>
           </div>
           <div className="form">
-            <form onSubmit={this.onSubmit}>
-              <label>
-                <h1>Lisää sana tai muokkaa haluamaasi</h1>
-              </label>
-              <label>
-                {" "}
-                englanniksi:
-                <input
-                  type="text"
-                  name="english_word"
-                  value={english_word}
-                  onChange={this.onChange}
-                />
-              </label>
-              <label>
-                {" "}
-                suomeksi:
-                <input
-                  type="text"
-                  name="finnish_word"
-                  value={finnish_word}
-                  onChange={this.onChange}
-                />
-              </label>
-              <button type="submit"> lisää </button>
-            </form>
+            <TableContainer
+              component={Paper}
+              style={{ maxWidth: "540px", textAlign: "center", margin: "auto" }}
+            >
+              <form onSubmit={this.onSubmit}>
+                <Table aria-label="customized table">
+                  <TableHead>
+                    <TableRow>
+                      <StyledTableCell style={style}>
+                        Englanniksi
+                      </StyledTableCell>
+                      <StyledTableCell align="right" style={style}>
+                        Suomeksi
+                      </StyledTableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    <StyledTableRow>
+                      <StyledTableCell component="th" scope="row" style={style}>
+                        <input
+                          type="text"
+                          name="english_word"
+                          value={english_word}
+                          onChange={this.onChange}
+                        />
+                      </StyledTableCell>
+                      <StyledTableCell align="right" style={style}>
+                        <input
+                          type="text"
+                          name="finnish_word"
+                          value={finnish_word}
+                          onChange={this.onChange}
+                        />
+                      </StyledTableCell>
+                    </StyledTableRow>
+                  </TableBody>
+                  <button type="submit" style={(style, { margin: "10px" })}>
+                    {" "}
+                    lisää{" "}
+                  </button>
+                </Table>
+              </form>
+            </TableContainer>
           </div>
         </div>
       </div>
