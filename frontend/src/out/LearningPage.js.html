@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: LearningPage.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: LearningPage.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * @author Tuukka Tuominen
  * @version 1.0.0
  */
@@ -33,14 +61,14 @@ const url = `http://localhost:${port}/words`;
  * @const {style}
  */
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
+  [`&amp;.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
   },
-  [`&.${tableCellClasses.body}`]: {
+  [`&amp;.${tableCellClasses.body}`]: {
     fontSize: 14,
   },
-  [`&`]: { maxWidth: "70px", textAlign: "center", margin: "auto" },
+  [`&amp;`]: { maxWidth: "70px", textAlign: "center", margin: "auto" },
 }));
 
 /**
@@ -48,11 +76,11 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
  * @const {style}
  */
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
+  "&amp;:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
   // hide last border
-  "&:last-child td, &:last-child th": {
+  "&amp;:last-child td, &amp;:last-child th": {
     border: 0,
   },
 }));
@@ -98,11 +126,11 @@ class LearningPage extends React.Component {
 
     rightAnswer = await this.state.words.find(
       (word) =>
-        word.id === answers.indexOf(this.state.answers[word.id]) &&
+        word.id === answers.indexOf(this.state.answers[word.id]) &amp;&amp;
         word.finnish_word === answer
     );
 
-    if (rightAnswer !== undefined && rightAnswer.finnish_word === answer) {
+    if (rightAnswer !== undefined &amp;&amp; rightAnswer.finnish_word === answer) {
       score[0] = score[0] + 1;
       this.setState({ score });
     }
@@ -110,29 +138,29 @@ class LearningPage extends React.Component {
 
   render() {
     return (
-      <Box className="content">
-        <Typography component="div">
-          <Box sx={{ fontSize: "h3.fontSize", m: 1 }}>Harjoittele sanoja</Box>
-        </Typography>
-        <TableContainer
+      &lt;Box className="content">
+        &lt;Typography component="div">
+          &lt;Box sx={{ fontSize: "h3.fontSize", m: 1 }}>Harjoittele sanoja&lt;/Box>
+        &lt;/Typography>
+        &lt;TableContainer
           component={Paper}
           style={{ maxWidth: "800px", textAlign: "center", margin: "auto" }}
         >
-          <Table sx={{ minWidth: 700 }} aria-label="customized table">
-            <TableHead>
-              <TableRow>
-                <StyledTableCell>Englanniksi</StyledTableCell>
-                <StyledTableCell align="right">Suomeksi</StyledTableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
+          &lt;Table sx={{ minWidth: 700 }} aria-label="customized table">
+            &lt;TableHead>
+              &lt;TableRow>
+                &lt;StyledTableCell>Englanniksi&lt;/StyledTableCell>
+                &lt;StyledTableCell align="right">Suomeksi&lt;/StyledTableCell>
+              &lt;/TableRow>
+            &lt;/TableHead>
+            &lt;TableBody>
               {this.state.words.map((word) => (
-                <StyledTableRow key={word.id}>
-                  <StyledTableCell component="th" scope="row">
+                &lt;StyledTableRow key={word.id}>
+                  &lt;StyledTableCell component="th" scope="row">
                     {word.english_word}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">
-                    <TextField
+                  &lt;/StyledTableCell>
+                  &lt;StyledTableCell align="right">
+                    &lt;TextField
                       type="text"
                       size="small"
                       onChange={(event) => {
@@ -143,22 +171,45 @@ class LearningPage extends React.Component {
                           this.addAnswer(word);
                         }
                       }}
-                    ></TextField>
-                  </StyledTableCell>
-                </StyledTableRow>
+                    >&lt;/TextField>
+                  &lt;/StyledTableCell>
+                &lt;/StyledTableRow>
               ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <Typography component="div">
-          <Box sx={{ fontSize: "h5.fontSize", m: 1 }}>
+            &lt;/TableBody>
+          &lt;/Table>
+        &lt;/TableContainer>
+        &lt;Typography component="div">
+          &lt;Box sx={{ fontSize: "h5.fontSize", m: 1 }}>
             {" "}
             Pisteesi = {this.state.score[0]}/{this.state.words.length}
-          </Box>
-        </Typography>
-      </Box>
+          &lt;/Box>
+        &lt;/Typography>
+      &lt;/Box>
     );
   }
 }
 
 export default LearningPage;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="LearningPage.html">LearningPage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#port">port</a></li><li><a href="global.html#StyledTableCell">StyledTableCell</a></li><li><a href="global.html#StyledTableRow">StyledTableRow</a></li><li><a href="global.html#url">url</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Jan 13 2022 18:08:31 GMT+0200 (Itä-Euroopan normaaliaika)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
