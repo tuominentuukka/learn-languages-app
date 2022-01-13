@@ -44,7 +44,7 @@ let connectionFunctions = {
   },
   /**
    * Function to find all words on database.
-   * @param {*} callback
+   * @param callback
    * @function findAll
    */
   findAll: (callback) => {
