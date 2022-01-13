@@ -57,10 +57,10 @@ class LearningPage extends React.Component {
   async addAnswer(word) {
     let rightAnswer = [];
     let answers = [...this.state.answers];
-    let answer = [...[word.id]];
+    let answer = await [...[word.id]];
     let score = [...this.state.score];
     answer = this.state.answer;
-    answers[word.id] = await answer;
+    answers[word.id] = answer;
     this.setState({ answers });
     rightAnswer = await this.state.words.find(
       (word) =>
@@ -72,7 +72,6 @@ class LearningPage extends React.Component {
       score[0] = score[0] + 1;
       this.setState({ score });
     }
-    console.log(rightAnswer, score);
   }
 
   render() {

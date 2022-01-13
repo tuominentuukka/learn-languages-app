@@ -64,13 +64,13 @@ class AdminPage extends React.Component {
       .then((res) => {
         this.setState((previousState) => {
           return {
-            words: previousState.words.filter((m) => m.id !== word.id),
+            words: previousState.words.filter(
+              (previous) => previous.id !== word.id
+            ),
           };
         });
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   };
 
   updateWord = (e, word) => {
@@ -81,20 +81,16 @@ class AdminPage extends React.Component {
       finnish_word: finnish_word,
       id: word.id,
     };
-    console.log(word.id);
     axios
       .put(url, data)
       .then((res) => {
-        console.log(res.data);
         axios.get(url).then((res) => {
           const words = res.data;
           this.setState({ words });
         });
         this.setState({ english_word: "", finnish_word: "" });
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   };
 
   onSubmit = (event) => {
@@ -102,8 +98,6 @@ class AdminPage extends React.Component {
     const { english_word, finnish_word } = this.state;
 
     axios.post(url, { english_word, finnish_word }).then((res) => {
-      console.log(res);
-      console.log(res.data);
       axios.get(url).then((res) => {
         const words = res.data;
         this.setState({ words });
