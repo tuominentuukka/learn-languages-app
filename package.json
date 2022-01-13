@@ -14,7 +14,8 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tuominentuukka/learn-languages-app/issues"
+    "url": "https://github.com/tuominentuukka/learn-languages-app/issues",
+    "script": "node index.js"
   },
   "homepage": "https://github.com/tuominentuukka/learn-languages-app#readme",
   "dependencies": {
