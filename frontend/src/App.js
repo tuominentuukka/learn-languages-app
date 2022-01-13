@@ -1,3 +1,8 @@
+/**
+ * @author Tuukka Tuominen
+ * @version 1.0.0
+ */
+
 import React from "react";
 
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
@@ -9,8 +14,16 @@ import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Typography from "@mui/material/Typography";
 import Toolbar from "@mui/material/Toolbar";
-
+/**
+ * @class App
+ * Represents a App.
+ * <br>Class to render other classes.
+ * @extends React.Component
+ */
 class App extends React.Component {
+  /**
+   * ComponentDidMount to show page on page load.
+   */
   componentDidMount() {
     document.title = "Opettele kieliä";
   }

@@ -60,7 +60,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 /**
  * @class LearningPage
  * Represents a LearningPage.
- * class to build learningPage component
+ * <br>class to build learningPage component
  * @extends React.Component
  */
 class LearningPage extends React.Component {
@@ -74,7 +74,7 @@ class LearningPage extends React.Component {
   }
 
   /**
-   * componentDidMount to load data when accesing page
+   * componentDidMount to load data from database when accesing page
    */
   componentDidMount() {
     axios.get(url).then((res) => {
@@ -85,7 +85,7 @@ class LearningPage extends React.Component {
 
   /**
    * AddAnswer method to check user input and compare it to
-   * databases correct answer. Add point if answer is correct.
+   * databases correct answer. <br>Add point if answer is correct.
    *@param {Object} word - Current word to be compared.
    */
   async addAnswer(word) {

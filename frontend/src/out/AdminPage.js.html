@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: AdminPage.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: AdminPage.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * @author Tuukka Tuominen
  * @version 1.0.0
  */
@@ -34,14 +62,14 @@ const url = `http://localhost:${port}/words`;
  * @const {style}
  */
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
+  [`&amp;.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
   },
-  [`&.${tableCellClasses.body}`]: {
+  [`&amp;.${tableCellClasses.body}`]: {
     fontSize: 14,
   },
-  [`&`]: { maxWidth: "70px", textAlign: "center", margin: "auto" },
+  [`&amp;`]: { maxWidth: "70px", textAlign: "center", margin: "auto" },
 }));
 
 /**
@@ -49,11 +77,11 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
  * @const {style}
  */
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
+  "&amp;:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
   // hide last border
-  "&:last-child td, &:last-child th": {
+  "&amp;:last-child td, &amp;:last-child th": {
     border: 0,
   },
 }));
@@ -61,7 +89,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 /**
  * @class AdminPage
  * Represents a AdminPage.
- * <br>Class to build AdminPage component.
+ * &lt;br>Class to build AdminPage component.
  * @extends React.Component
  */
 
@@ -91,7 +119,7 @@ class AdminPage extends React.Component {
 
   /**
    * Remove word from database.
-   * <br> Reload data to show current content.
+   * &lt;br> Reload data to show current content.
    * @param {String} e
    * @param {Object} word
    */
@@ -112,7 +140,7 @@ class AdminPage extends React.Component {
 
   /**
    * Update word in database.
-   * <br> Reload data to show updated data.
+   * &lt;br> Reload data to show updated data.
    * @param {String} e
    * @param {Object} word
    */
@@ -164,107 +192,130 @@ class AdminPage extends React.Component {
   render() {
     const { english_word, finnish_word } = this.state;
     return (
-      <Box className="body">
-        <Box className="content">
-          <Box className="list">
-            <TableContainer
+      &lt;Box className="body">
+        &lt;Box className="content">
+          &lt;Box className="list">
+            &lt;TableContainer
               component={Paper}
               style={{ maxWidth: "800px", textAlign: "center", margin: "auto" }}
             >
-              <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                <TableHead>
-                  <TableRow>
-                    <StyledTableCell>Englanniksi</StyledTableCell>
-                    <StyledTableCell align="right">Suomeksi</StyledTableCell>
-                    <StyledTableCell></StyledTableCell>
-                    <StyledTableCell></StyledTableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
+              &lt;Table sx={{ minWidth: 700 }} aria-label="customized table">
+                &lt;TableHead>
+                  &lt;TableRow>
+                    &lt;StyledTableCell>Englanniksi&lt;/StyledTableCell>
+                    &lt;StyledTableCell align="right">Suomeksi&lt;/StyledTableCell>
+                    &lt;StyledTableCell>&lt;/StyledTableCell>
+                    &lt;StyledTableCell>&lt;/StyledTableCell>
+                  &lt;/TableRow>
+                &lt;/TableHead>
+                &lt;TableBody>
                   {this.state.words.map((word) => (
-                    <StyledTableRow key={word.id}>
-                      <StyledTableCell component="th" scope="row">
+                    &lt;StyledTableRow key={word.id}>
+                      &lt;StyledTableCell component="th" scope="row">
                         {word.english_word}
-                      </StyledTableCell>
-                      <StyledTableCell align="right">
+                      &lt;/StyledTableCell>
+                      &lt;StyledTableCell align="right">
                         {word.finnish_word}
-                      </StyledTableCell>
-                      <StyledTableCell align="right">
-                        <Button
+                      &lt;/StyledTableCell>
+                      &lt;StyledTableCell align="right">
+                        &lt;Button
                           variant="contained"
                           type="submit"
                           style={{ backgroundColor: "red" }}
                           onClick={(e) => this.removeWord(e, word)}
                         >
                           poista
-                        </Button>
-                      </StyledTableCell>
-                      <StyledTableCell align="right">
-                        <Button
+                        &lt;/Button>
+                      &lt;/StyledTableCell>
+                      &lt;StyledTableCell align="right">
+                        &lt;Button
                           variant="contained"
                           type="submit"
                           onClick={(e) => this.updateWord(e, word)}
                         >
                           päivitä
-                        </Button>
-                      </StyledTableCell>
-                    </StyledTableRow>
+                        &lt;/Button>
+                      &lt;/StyledTableCell>
+                    &lt;/StyledTableRow>
                   ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </Box>
-          <Box className="form">
-            <TableContainer
+                &lt;/TableBody>
+              &lt;/Table>
+            &lt;/TableContainer>
+          &lt;/Box>
+          &lt;Box className="form">
+            &lt;TableContainer
               component={Paper}
               style={{ maxWidth: "540px", textAlign: "center", margin: "auto" }}
             >
-              <form onSubmit={this.onSubmit}>
-                <Table aria-label="customized table">
-                  <TableHead>
-                    <TableRow>
-                      <StyledTableCell>Englanniksi</StyledTableCell>
-                      <StyledTableCell align="right">Suomeksi</StyledTableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    <StyledTableRow>
-                      <StyledTableCell component="th" scope="row">
-                        <TextField
+              &lt;form onSubmit={this.onSubmit}>
+                &lt;Table aria-label="customized table">
+                  &lt;TableHead>
+                    &lt;TableRow>
+                      &lt;StyledTableCell>Englanniksi&lt;/StyledTableCell>
+                      &lt;StyledTableCell align="right">Suomeksi&lt;/StyledTableCell>
+                    &lt;/TableRow>
+                  &lt;/TableHead>
+                  &lt;TableBody>
+                    &lt;StyledTableRow>
+                      &lt;StyledTableCell component="th" scope="row">
+                        &lt;TextField
                           type="text"
                           name="english_word"
                           value={english_word}
                           onChange={this.onChange}
                           size="small"
                         />
-                      </StyledTableCell>
-                      <StyledTableCell align="right">
-                        <TextField
+                      &lt;/StyledTableCell>
+                      &lt;StyledTableCell align="right">
+                        &lt;TextField
                           type="text"
                           name="finnish_word"
                           value={finnish_word}
                           size="small"
                           onChange={this.onChange}
                         />
-                      </StyledTableCell>
-                    </StyledTableRow>
-                  </TableBody>
-                </Table>
-                <Button
+                      &lt;/StyledTableCell>
+                    &lt;/StyledTableRow>
+                  &lt;/TableBody>
+                &lt;/Table>
+                &lt;Button
                   variant="contained"
                   type="submit"
                   style={{ margin: "10px", backgroundColor: "green" }}
                 >
                   {" "}
                   lisää{" "}
-                </Button>
-              </form>
-            </TableContainer>
-          </Box>
-        </Box>
-      </Box>
+                &lt;/Button>
+              &lt;/form>
+            &lt;/TableContainer>
+          &lt;/Box>
+        &lt;/Box>
+      &lt;/Box>
     );
   }
 }
 
 export default AdminPage;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdminPage.html">AdminPage</a></li><li><a href="App.html">App</a></li><li><a href="LearningPage.html">LearningPage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#port">port</a></li><li><a href="global.html#StyledTableCell">StyledTableCell</a></li><li><a href="global.html#StyledTableRow">StyledTableRow</a></li><li><a href="global.html#url">url</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Jan 13 2022 18:30:45 GMT+0200 (Itä-Euroopan normaaliaika)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
