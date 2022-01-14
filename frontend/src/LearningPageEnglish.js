@@ -19,16 +19,10 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 /**
- * Port for backend.
- * @const {number}
- */
-const port = process.env.PORT || 8080;
-/**
  * Url to backend.
  * @const {String}
  */
-const url = `http://localhost:${port}/words`;
-//const url = `/words`;
+const url = `/words`;
 
 /**
  * Styling for table cells.
