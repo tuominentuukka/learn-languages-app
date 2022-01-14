@@ -23,6 +23,7 @@ app.listen(port, () => {
 connection.connect();
 
 app.use(cors());
+app.disable("etag");
 
 app.use(express.static("frontend/build"));
 
