@@ -17,17 +17,12 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-/**
- * Port for backend.
- * @const {number}
- */
-const port = process.env.PORT || 8080;
 
 /**
  * Url to backend.
  * @const {String}
  */
-//const url = `http://localhost:${port}/words`;
+
 const url = `/words`;
 
 /**
