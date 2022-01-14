@@ -60,8 +60,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 /**
- * @class LearningPage
- * Represents a LearningPage.
+ * @class LearningPageFinnish
+ * Represents a LearningPageFinnish.
  * <br>class to build learningPage component
  * @extends React.Component
  */
