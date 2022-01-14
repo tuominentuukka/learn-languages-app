@@ -22,8 +22,6 @@ App was created part of school work and to lean to integrate frontend and backen
 - [Node.js](https://nodejs.org/en/)
 - [mysql](https://www.mysql.com/)
 
-## How to use?
-
 
 ## Author
 
