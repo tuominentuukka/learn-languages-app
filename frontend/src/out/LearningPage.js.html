@@ -32,63 +32,14 @@
  */
 
 import React from "react";
-import "./App.css";
-import axios from "axios";
-import { styled } from "@mui/material/styles";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-/**
- * Port for backend.
- * @const {number}
- */
-const port = process.env.PORT || 8080;
-/**
- * Url to backend.
- * @const {String}
- */
-const url = `http://localhost:${port}/words`;
-
-/**
- * Styling for table cells.
- * @const {style}
- */
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&amp;.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  [`&amp;.${tableCellClasses.body}`]: {
-    fontSize: 14,
-  },
-  [`&amp;`]: { maxWidth: "70px", textAlign: "center", margin: "auto" },
-}));
-
-/**
- * Styling for table rows.
- * @const {style}
- */
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&amp;:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  "&amp;:last-child td, &amp;:last-child th": {
-    border: 0,
-  },
-}));
+import Button from "@mui/material/Button";
+import LearningPageFinnish from "./LearningPageFinnish";
+import LearningPageEnglish from "./LearningPageEnglish";
 
 /**
  * @class LearningPage
  * Represents a LearningPage.
- * &lt;br>class to build learningPage component
+ * &lt;br>Class to choose which learning page to show.
  * @extends React.Component
  */
 class LearningPage extends React.Component {
@@ -98,94 +49,61 @@ class LearningPage extends React.Component {
    */
   constructor() {
     super();
-    this.state = { words: [], answers: [], score: [0] };
+    this.state = {
+      words: [],
+      answers: [],
+      score: [0],
+      finnish: false,
+      english: false,
+    };
+    this._onButtonClickFinnish = this._onButtonClickFinnish.bind(this);
+    this._onButtonClickEnglish = this._onButtonClickEnglish.bind(this);
   }
 
   /**
-   * componentDidMount to load data from database when accesing page
+   * Set page to show finnish writing version.
    */
-  componentDidMount() {
-    axios.get(url).then((res) => {
-      const words = res.data;
-      this.setState({ words });
+  _onButtonClickFinnish() {
+    this.setState({
+      finnish: true,
+      english: false,
     });
   }
 
   /**
-   * AddAnswer method to check user input and compare it to
-   * databases correct answer. &lt;br>Add point if answer is correct.
-   *@param {Object} word - Current word to be compared.
+   * Set page to show english writing version.
    */
-  async addAnswer(word) {
-    let rightAnswer = [];
-    let answers = [...this.state.answers];
-    let answer = await [...[word.id]];
-    let score = [...this.state.score];
-    answer = this.state.answer;
-    answers[word.id] = answer;
-    this.setState({ answers });
-
-    rightAnswer = await this.state.words.find(
-      (word) =>
-        word.id === answers.indexOf(this.state.answers[word.id]) &amp;&amp;
-        word.finnish_word === answer
-    );
-
-    if (rightAnswer !== undefined &amp;&amp; rightAnswer.finnish_word === answer) {
-      score[0] = score[0] + 1;
-      this.setState({ score });
-    }
+  _onButtonClickEnglish() {
+    this.setState({
+      finnish: false,
+      english: true,
+    });
   }
 
   render() {
     return (
-      &lt;Box className="content">
-        &lt;Typography component="div">
-          &lt;Box sx={{ fontSize: "h3.fontSize", m: 1 }}>Harjoittele sanoja&lt;/Box>
-        &lt;/Typography>
-        &lt;TableContainer
-          component={Paper}
-          style={{ maxWidth: "800px", textAlign: "center", margin: "auto" }}
+      &lt;div>
+        &lt;Button
+          variant="outlined"
+          name="finnish"
+          style={{ marginTop: "20px", marginRight: "20px" }}
+          onClick={this._onButtonClickFinnish}
         >
-          &lt;Table sx={{ minWidth: 700 }} aria-label="customized table">
-            &lt;TableHead>
-              &lt;TableRow>
-                &lt;StyledTableCell>Englanniksi&lt;/StyledTableCell>
-                &lt;StyledTableCell align="right">Suomeksi&lt;/StyledTableCell>
-              &lt;/TableRow>
-            &lt;/TableHead>
-            &lt;TableBody>
-              {this.state.words.map((word) => (
-                &lt;StyledTableRow key={word.id}>
-                  &lt;StyledTableCell component="th" scope="row">
-                    {word.english_word}
-                  &lt;/StyledTableCell>
-                  &lt;StyledTableCell align="right">
-                    &lt;TextField
-                      type="text"
-                      size="small"
-                      onChange={(event) => {
-                        this.setState({ answer: event.target.value });
-                      }}
-                      onKeyPress={(event) => {
-                        if (event.key === "Enter") {
-                          this.addAnswer(word);
-                        }
-                      }}
-                    >&lt;/TextField>
-                  &lt;/StyledTableCell>
-                &lt;/StyledTableRow>
-              ))}
-            &lt;/TableBody>
-          &lt;/Table>
-        &lt;/TableContainer>
-        &lt;Typography component="div">
-          &lt;Box sx={{ fontSize: "h5.fontSize", m: 1 }}>
-            {" "}
-            Pisteesi = {this.state.score[0]}/{this.state.words.length}
-          &lt;/Box>
-        &lt;/Typography>
-      &lt;/Box>
+          Kirjoita suomeksi
+        &lt;/Button>
+        &lt;Button
+          variant="outlined"
+          name="english"
+          style={{ marginTop: "20px", marginLeft: "20px" }}
+          onClick={this._onButtonClickEnglish}
+        >
+          Kirjoita englanniksi
+        &lt;/Button>
+        &lt;div>
+          {this.state.finnish ? &lt;LearningPageFinnish /> : null}
+          {this.state.english ? &lt;LearningPageEnglish /> : null}
+        &lt;/div>
+      &lt;/div>
     );
   }
 }
@@ -201,13 +119,13 @@ export default LearningPage;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdminPage.html">AdminPage</a></li><li><a href="App.html">App</a></li><li><a href="LearningPage.html">LearningPage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#port">port</a></li><li><a href="global.html#StyledTableCell">StyledTableCell</a></li><li><a href="global.html#StyledTableRow">StyledTableRow</a></li><li><a href="global.html#url">url</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdminPage.html">AdminPage</a></li><li><a href="App.html">App</a></li><li><a href="LearningPage.html">LearningPage</a></li><li><a href="LearningPageEnglish.html">LearningPageEnglish</a></li><li><a href="LearningPageFinnish.html">LearningPageFinnish</a></li></ul><h3>Global</h3><ul><li><a href="global.html#port">port</a></li><li><a href="global.html#StyledTableCell">StyledTableCell</a></li><li><a href="global.html#StyledTableRow">StyledTableRow</a></li><li><a href="global.html#url">url</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Jan 13 2022 18:30:45 GMT+0200 (Itä-Euroopan normaaliaika)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Jan 14 2022 02:50:27 GMT+0200 (Itä-Euroopan normaaliaika)
 </footer>
 
 <script> prettyPrint(); </script>
