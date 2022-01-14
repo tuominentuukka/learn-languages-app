@@ -1,9 +1,24 @@
+/**
+ * @author Tuukka Tuominen
+ * @version 1.0.0
+ */
+
 import React from "react";
 import Button from "@mui/material/Button";
 import LearningPageFinnish from "./LearningPageFinnish";
 import LearningPageEnglish from "./LearningPageEnglish";
 
+/**
+ * @class LearningPage
+ * Represents a LearningPage.
+ * <br>Class to choose which learning page to show.
+ * @extends React.Component
+ */
 class LearningPage extends React.Component {
+  /**
+   * Constructor to set states.
+   * @constructor
+   */
   constructor() {
     super();
     this.state = {
@@ -13,22 +28,28 @@ class LearningPage extends React.Component {
       finnish: false,
       english: false,
     };
-    this._onButtonClick = this._onButtonClick.bind(this);
-    this._onButtonClick2 = this._onButtonClick2.bind(this);
+    this._onButtonClickFinnish = this._onButtonClickFinnish.bind(this);
+    this._onButtonClickEnglish = this._onButtonClickEnglish.bind(this);
   }
-  _onButtonClick() {
-    this.setState({
-      finnish: false,
-      english: true,
-    });
-    console.log(this._onButtonClick);
-  }
-  _onButtonClick2() {
+
+  /**
+   * Set page to show finnish writing version.
+   */
+  _onButtonClickFinnish() {
     this.setState({
       finnish: true,
       english: false,
     });
-    console.log(this._onButtonClick2);
+  }
+
+  /**
+   * Set page to show english writing version.
+   */
+  _onButtonClickEnglish() {
+    this.setState({
+      finnish: false,
+      english: true,
+    });
   }
 
   render() {
@@ -38,7 +59,7 @@ class LearningPage extends React.Component {
           variant="outlined"
           name="finnish"
           style={{ marginTop: "20px", marginRight: "20px" }}
-          onClick={this._onButtonClick}
+          onClick={this._onButtonClickFinnish}
         >
           Kirjoita suomeksi
         </Button>
@@ -46,7 +67,7 @@ class LearningPage extends React.Component {
           variant="outlined"
           name="english"
           style={{ marginTop: "20px", marginLeft: "20px" }}
-          onClick={this._onButtonClick2}
+          onClick={this._onButtonClickEnglish}
         >
           Kirjoita englanniksi
         </Button>
