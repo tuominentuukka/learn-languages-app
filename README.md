@@ -2,8 +2,6 @@
 
 Learn languages is web app to help you learn different languages
 
-## Heroku
-- [learn-languages](https://learn-languages-app.herokuapp.com/)
 
 ## Motivation
 
